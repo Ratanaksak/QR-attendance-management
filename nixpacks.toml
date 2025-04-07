@@ -1,17 +1,10 @@
 [phases.setup]
-# Use Python 3.13 or your desired version
-nixPkgs = ["python313", "pip"]
+nixPkgs = ["python311", "pip"]
 
 [phases.install]
-# Install dependencies from requirements.txt
 cmds = [
   "pip install -r requirements.txt"
 ]
 
-[phases.build]
-# No special build steps, Django doesn't need this for production
-cmds = []
-
 [start]
-# Command to start the Django app with Gunicorn
 cmd = "gunicorn management_system.wsgi:application --bind 0.0.0.0:$PORT"

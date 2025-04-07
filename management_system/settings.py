@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-u4q&c&!5d%j^*6@+a_1zrdeu#axt-g#lzt)u2#c8c9q)vbte3o
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '*',
+    'web-production-cbed0.up.railway.app',
     '127.0.0.1',
     '192.168.8.123',  # Your local IP
     'localhost:8080',
@@ -136,7 +136,8 @@ USE_I18N = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # Make sure your static files are in this directory
+    BASE_DIR / 'static',  # Base static directory
+    BASE_DIR / 'static/data',  # JSON files in a separate subfolder
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

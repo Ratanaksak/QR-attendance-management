@@ -1,19 +1,6 @@
-{ pkgs ? import <nixpkgs> {} }:
+[phases.setup]
+nixPkgs = ["python312", "python3Packages.pip"]
 
-pkgs.mkShell rec {
-  buildInputs = [
-    pkgs.python3
-    pkgs.python3Packages.pip
-    pkgs.python3Packages.setuptools
-    pkgs.python3Packages.wheel
-    pkgs.python3Packages.django
-    pkgs.python3Packages.gunicorn
-    pkgs.python3Packages.whitenoise
-    pkgs.python3Packages.django-import-export
-    # Add other dependencies here
-  ];
 
-  shellHook = ''
-    export PYTHONPATH=${pkgs.python3Packages.django}/lib/python3.9/site-packages
-  '';
-}
+[start]
+cmd = "gunicorn management_system.wsgi:application --bind 0.0.0.0:$PORT"
